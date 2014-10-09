@@ -72,6 +72,7 @@
     ],
     init: function() {
       this.setOutput(true, 'Number');
+      this.setInputsInline(true);
       this.appendDummyInput().appendField('the')
         .appendField(new Blockly.FieldDropdown(this.PROPERTIES), 'PROPERTY')
       this.appendValueInput('TARGET').setCheck('Entity')
@@ -93,6 +94,7 @@
   Blockly.Blocks['set_entity_number_prop'] = {
     PROPERTIES: Blockly.Blocks['get_entity_number_prop'].PROPERTIES,
     init: function() {
+      this.setInputsInline(true);
       this.setPreviousStatement(true);
       this.setNextStatement(true);
       this.appendDummyInput().appendField('set the')
@@ -118,6 +120,7 @@
   Blockly.Blocks['change_entity_number_prop'] = {
     PROPERTIES: Blockly.Blocks['get_entity_number_prop'].PROPERTIES,
     init: function() {
+      this.setInputsInline(true);
       this.setPreviousStatement(true);
       this.setNextStatement(true);
       this.appendDummyInput().appendField('change the')
@@ -142,6 +145,7 @@
 
   Blockly.Blocks['handle_update'] = {
     init: function() {
+      this.setInputsInline(true);
       this.setPreviousStatement(true);
       this.setNextStatement(true);
       this.appendValueInput('TARGET').setCheck('Entity')
