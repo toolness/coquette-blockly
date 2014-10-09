@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+html, body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#blockly {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.blocklySvg {
+  height: 100%;
+  width: 100%;
+}
+
+#play, #stop {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+}
+
+#game iframe {
+  width: 500px;
+  height: 150px;
+  border: none;
+  overflow: hidden;
+}
+</style>
+<body>
+  <div id="blockly">
+    <button id="play" title="Play game (Ctrl+space)">Play</button>
+    <xml id="toolbox" style="display: none">
+      <block type="create_entity"></block>
+      <block type="handle_update"></block>
+      <block type="this_entity"></block>
+      <block type="get_entity_number_prop"></block>
+      <block type="set_entity_number_prop"></block>
+      <block type="change_entity_number_prop"></block>
+      <block type="variables_get"></block>
+      <block type="variables_set"></block>
+      <block type="controls_if"></block>
+      <block type="inputter_pressed"></block>
+      <block type="math_number"></block>
+      <block type="math_arithmetic"></block>
+      <block type="colour_picker"></block>
+    </xml>
+  </div>
+  <div id="game" style="display: none">
+    <button id="stop" title="Stop game (ESC)">Stop</button>
+  </div>
+  <script src="vendor/blockly/blockly_compressed.js"></script>
+  <script src="vendor/blockly/blocks_compressed.js"></script>
+  <script src="vendor/blockly/javascript_compressed.js"></script>
+  <script src="vendor/blockly/en.js"></script>
+  <script src="vendor/jquery.js"></script>
+  <script src="vendor/coquette.js"></script>
+  <script src="coquette-blocks.js"></script>
+  <script src="main.js"></script>
+</body>
