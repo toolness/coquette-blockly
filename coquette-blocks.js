@@ -41,6 +41,20 @@
     ];
   };
 
+  Blockly.Blocks['other_entity'] = {
+    init: function() {
+      this.setOutput(true, 'Entity');
+      this.appendDummyInput().appendField('the other Entity');
+    }
+  };
+
+  Blockly.JavaScript['other_entity'] = function(block) {
+    return [
+      'other',
+      Blockly.JavaScript.ORDER_ATOMIC
+    ];
+  };
+
   Blockly.Blocks['inputter_pressed'] = {
     BUTTONS: [
       ['left mouse', 'LEFT_MOUSE'],
@@ -170,5 +184,35 @@
           '\'' + block.id + '\'') + branch;
     }
     return target + '.update = function() {\n' + branch + '};\n'
+  };
+
+  Blockly.Blocks['handle_collision'] = {
+    init: function() {
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.appendValueInput('TARGET').setCheck('Entity')
+        .appendField('when');
+      this.appendStatementInput('STACK')
+        .appendField('collides with another');
+    }
+  };
+
+  Blockly.JavaScript['handle_collision'] = function(block) {
+    var target = Blockly.JavaScript.valueToCode(
+      block, 'TARGET',
+      Blockly.JavaScript.ORDER_ATOMIC
+    ) || EMPTY_OBJECT_LITERAL;
+    var branch = Blockly.JavaScript.statementToCode(block, 'STACK');
+    if (Blockly.JavaScript.STATEMENT_PREFIX) {
+      branch = Blockly.JavaScript.prefixLines(
+          Blockly.JavaScript.STATEMENT_PREFIX.replace(/%1/g,
+          '\'' + block.id + '\''), Blockly.JavaScript.INDENT) + branch;
+    }
+    if (Blockly.JavaScript.INFINITE_LOOP_TRAP) {
+      branch = Blockly.JavaScript.INFINITE_LOOP_TRAP.replace(/%1/g,
+          '\'' + block.id + '\'') + branch;
+    }
+    return target + '.collision = function(other) {\n' + branch + '};\n'
   };
 })();
