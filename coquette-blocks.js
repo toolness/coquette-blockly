@@ -4,6 +4,7 @@
   Blockly.Blocks['create_entity'] = {
     init: function() {
       this.setOutput(true, 'Entity');
+      this.setInputsInline(true);
       this.appendDummyInput().appendField('a new Entity');
       this.appendValueInput('X').setCheck('Number').appendField('at x');
       this.appendValueInput('Y').setCheck('Number').appendField('and y');
