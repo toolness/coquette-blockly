@@ -249,12 +249,40 @@ html, body {
         <category name="Variables" custom="VARIABLE"></category>
         <category name="Functions" custom="PROCEDURE"></category>
         <category name="Coquette">
-          <block type="create_entity"></block>
+          <block type="create_entity">
+            <value name="X">
+                <block type="math_number">
+                    <field name="NUM">30</field>
+                </block>
+            </value>
+            <value name="Y">
+                <block type="math_number">
+                    <field name="NUM">30</field>
+                </block>
+            </value>
+            <value name="COLOUR">
+                <block type="colour_picker">
+                    <field name="COLOUR">#ff0000</field>
+                </block>
+            </value>
+          </block>
           <block type="handle_update"></block>
           <block type="this_entity"></block>
           <block type="get_entity_number_prop"></block>
-          <block type="set_entity_number_prop"></block>
-          <block type="change_entity_number_prop"></block>
+          <block type="set_entity_number_prop">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+          </block>
+          <block type="change_entity_number_prop">
+            <value name="VALUE">
+                <block type="math_number">
+                    <field name="NUM">0</field>
+                </block>
+            </value>
+          </block>
           <block type="inputter_pressed"></block>
         </category>
     </xml>
