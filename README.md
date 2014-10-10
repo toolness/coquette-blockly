@@ -1,11 +1,33 @@
 This is a very experimental, partial implementation of the
 [Coquette][] micro-framework for JavaScript games in [Blockly][].
 
-## Examples
+When opened, the Blockly workspace contains a rough equivalent of the
+sample game at the top of Coquette's documentation, with the following
+modifications:
 
-* <a target="_blank" href="https://toolness.github.io/coquette-blockly/?initialWorkspace=eJy1Vm2PmkAY.Ctk_.nkTb2zURJ7tU3T62EoXNtPZIVVNrcsBJZT.v09UfTCAupVj8Qgws5MZuZZHG9ipsCH5xMUCZF_VtX1et1bm70kW6n6aDRSN5GIGbLGC5YEz4ooUzJBLzijeMFI7udEIIWGE6TDiTPK4a7ICoKUzQTdDHQDKSV86esDgFhSwkKF4xgeepo6yEpxhuOkyMbq9pY1fsGsIIcnHryZRBxkBAviEy6oKHfEhkRcB.krAcRYRD4v4gXJdstNSdej9wtZxkA7SFK3y_G8ha2j.zuF3m9D758Hfm8.2J4jG5Aw8MtPafC855Cd3a.7ZJpDODq55GtONuJkzMOG281QGS7JRZHeXhbpXXuk3U68K9JRG7quXzdTXesKNQg0OC4INcI8ZMQv0hBsr9jk4a2LdqfO95nbuQWsDluAcUYdZIG5ABkxpF_t_e1O7382DOIiS1ju02XFZL4JXmKWy4p.fNMkCMrTQggCLmckz0lY4cjz_cVzXfsRWd7cnzqO.eds2V9tmTEAo1f7XlcNAvYkragHRydp7tjzmeNCGwNAIFmvbB2o1mhERPPaPOlDdLyWbXPZKL5_29b8G63XP93Gg13tv3W2FEaD0ZwmvJJwd52iyjN8raLCNtkZuKF9WOCJiICq9lLU.yPx1TH1zdfsh9XVMFvEv6tauz6deQl.f6xXQdIEWg">sample</a>, the sample game at the top of Coquette's documentation.
+* The code for `Person` is called `Entity` instead, and it's external
+  to the generated code (so no way players can write their own display
+  routines), though we could add [mutators][] to the entity constructor
+  (like the little star button at the top-left of the "if" block) that
+  allow more things to be configured on them, like height/width,
+  maybe even an image instead of a colour, and so on.
+
+* There is no Game object; we just hard-code a global called `c` that
+  is a Coquette instance. This is separate from the generated code,
+  though the downside right now is that there's no way to configure
+  the game's dimensions or background color through the code.
+
+* Blockly doesn't have a concept of classes, and I wanted it to be
+  easy to attach the same update/collision handlers to multiple
+  instances of the same object, without having to use classes, so
+  methods like `update` and `collision` are done by directly assigning
+  functions to properties. This may or may not be weird and impede learning.
+
+Like all Blockly code, the generated JavaScript is intended to be
+eminently readable. Click the "view source" button in the editor to see it.
 
 <!-- Links -->
 
   [Coquette]: http://coquette.maryrosecook.com/
   [Blockly]: https://code.google.com/p/blockly/
+  [mutators]: https://code.google.com/p/blockly/wiki/CreatingMutators
