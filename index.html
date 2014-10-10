@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
 <style>
 html, body {
   background-color: #fff;
@@ -21,29 +22,28 @@ html, body {
   width: 100%;
 }
 
-button {
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 4px 8px;
-  font-family: inherit;
-  font-size: inherit;
-}
-
 #play {
   background-color: green;
   color: white;
 }
 
+#play:hover {
+  background-color: limegreen;
+}
+
 #stop {
-  background-color: red;
+  background-color: crimson;
   color: white;
 }
 
-#play, #stop {
+#stop:hover {
+  background-color: red;
+}
+
+ul.toolbar {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 20px;
 }
 
 #game {
@@ -64,7 +64,10 @@ button {
 </style>
 <body>
   <div id="blockly">
-    <button id="play" title="Play game (Ctrl+space)"><i class="fa fa-play"></i></button>
+    <ul class="toolbar list-unstyled list-inline">
+      <li><button id="link" class="btn btn-default" title="Link to this game"><i class="fa fa-link"></i></button></li>
+      <li><button id="play" class="btn" title="Play game (Ctrl+space)"><i class="fa fa-play"></i></button></li>
+    </ul>
     <xml id="toolbox" style="display: none">
         <category name="Logic">
             <block type="controls_if"></block>
@@ -310,14 +313,16 @@ button {
     </xml>
   </div>
   <div id="game" style="display: none">
-    <button id="stop" title="Stop game (ESC)"><i class="fa fa-stop"></i></button>
+    <ul class="toolbar list-unstyled">
+      <button id="stop" class="btn" title="Stop game (ESC)"><i class="fa fa-stop"></i></button>
+    </ul>
   </div>
   <script src="vendor/blockly/blockly_compressed.js"></script>
   <script src="vendor/blockly/blocks_compressed.js"></script>
   <script src="vendor/blockly/javascript_compressed.js"></script>
   <script src="vendor/blockly/en.js"></script>
   <script src="vendor/jquery.js"></script>
-  <script src="vendor/coquette.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.js"></script>
   <script src="coquette-blocks.js"></script>
   <script src="main.js"></script>
 </body>
