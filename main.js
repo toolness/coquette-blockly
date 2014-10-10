@@ -59,6 +59,10 @@
       window.open(url);
     });
 
+    $('#view-source').click(function() {
+      $('#source').modal().find('textarea').val(generateGameHTML());
+    });
+
     $('#play').click(function() {
       var iframe = document.createElement('iframe');
       var html = generateGameHTML();
