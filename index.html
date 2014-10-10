@@ -65,7 +65,7 @@ ul.toolbar {
 <body>
   <div id="blockly">
     <ul class="toolbar list-unstyled list-inline">
-      <li><button id="link" class="btn btn-default" title="Link to this game"><i class="fa fa-link"></i></button></li>
+      <li><button id="linkify" class="btn btn-default" title="Link to this game"><i class="fa fa-link"></i></button></li>
       <li><button id="play" class="btn" title="Play game (Ctrl+space)"><i class="fa fa-play"></i></button></li>
     </ul>
     <xml id="toolbox" style="display: none">
@@ -323,6 +323,9 @@ ul.toolbar {
   <script src="vendor/blockly/en.js"></script>
   <script src="vendor/jquery.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.js"></script>
+  <script src="vendor/mdn-b64.js"></script>
+  <script src="vendor/pako.min.js"></script>
+  <script src="b64gzip.js"></script>
   <script src="coquette-blocks.js"></script>
   <script src="main.js"></script>
 </body>

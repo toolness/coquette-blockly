@@ -1,10 +1,15 @@
 (function() {
   // Workspace save/load functionality.
 
-  var KEY_NAME = 'blockly_xml?' + window.location.search.slice(1);
+  var KEY_NAME = 'blockly_xml?' + window.location.pathname;
+
+  function getCurrentWorkspaceXml() {
+    var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    return Blockly.Xml.domToText(xml);
+  }
 
   function loadSavedWorkspace() {
-    var lastXML = window.sessionStorage[KEY_NAME];
+    var lastXML = window.sessionStorage[KEY_NAME] || getInitialWorkspace();
     if (lastXML) {
       var xml = Blockly.Xml.textToDom(lastXML);
       Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
@@ -12,8 +17,17 @@
   }
 
   function saveCurrentWorkspace() {
-    var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-    window.sessionStorage[KEY_NAME] = Blockly.Xml.domToPrettyText(xml);
+    window.sessionStorage[KEY_NAME] = getCurrentWorkspaceXml();
+  }
+
+  function linkifyCurrentWorkspace() {
+    return window.location.origin + window.location.pathname + '?' +
+           'initialWorkspace=' + B64Gzip.compress(getCurrentWorkspaceXml());
+  }
+
+  function getInitialWorkspace() {
+    var match = window.location.search.match(/initialWorkspace=([^&]+)/);
+    try { return B64Gzip.decompress(match[1]); } catch(e) {}
   }
 
   // Initialization.
@@ -54,6 +68,10 @@
       $('#game').hide();
       $('#blockly').show();
       $(window).focus();
+    });
+
+    $('#linkify').click(function() {
+      prompt('Here is a link to your game.', linkifyCurrentWorkspace());
     });
 
 //    $('#play').click();
