@@ -1,6 +1,12 @@
 This is a very experimental, partial implementation of the
 [Coquette][] micro-framework for JavaScript games in [Blockly][].
 
+The motivation here is that learners interested in game design could
+use this tool as scaffolding to learn JavaScript and Coquette. Like all
+Blockly code, the generated JavaScript is intended to be eminently
+readable and reasonably idiomatic. A "view source" button has been added to
+the editor to assist in this learning process.
+
 When opened, the Blockly workspace contains a rough equivalent of the
 sample game at the top of Coquette's documentation, with the following
 modifications:
@@ -22,9 +28,6 @@ modifications:
   instances of the same object, without having to use classes, so
   methods like `update` and `collision` are done by directly assigning
   functions to properties. This may or may not be weird and impede learning.
-
-Like all Blockly code, the generated JavaScript is intended to be
-eminently readable. Click the "view source" button in the editor to see it.
 
 <!-- Links -->
 
