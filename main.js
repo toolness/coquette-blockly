@@ -41,14 +41,29 @@
         return $('#stop').click();
     };
 
+    var generateGameHTML = function() {
+      var script = Blockly.JavaScript.workspaceToCode();
+      var lastSlash = window.location.pathname.lastIndexOf('/');
+      var baseURL = window.location.origin +
+                    window.location.pathname.slice(0, lastSlash + 1);
+
+      return gameHTML
+        .replace(/src=".\//g, 'src="' + baseURL)
+        .replace('// INSERT GENERATED CODE HERE', script);
+    };
+
+    $('#pop-out').click(function() {
+      var html = generateGameHTML();
+      var url = 'data:text/html;base64,' + base64EncArr(strToUTF8Arr(html));
+
+      window.open(url);
+    });
+
     $('#play').click(function() {
       var iframe = document.createElement('iframe');
-      var scriptTag = '<script>\n' +
-                      Blockly.JavaScript.workspaceToCode() +
-                      '</script>';
-      var html = gameHTML + scriptTag;
+      var html = generateGameHTML();
 
-      console.log(scriptTag);
+      console.log(html);
 
       $('#blockly').hide();
       $('#game').show();
