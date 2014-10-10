@@ -1,13 +1,13 @@
 This is a very experimental, partial implementation of the
 [Coquette][] micro-framework for JavaScript games in [Blockly][].
 
-The motivation here is that learners interested in game design could
-use this tool as scaffolding to learn JavaScript and Coquette. Like all
+The motivation here is that **learners interested in game design could
+use this tool as scaffolding to learn JavaScript and Coquette**. Like all
 Blockly code, the generated JavaScript is intended to be eminently
 readable and reasonably idiomatic. A "view source" button has been added to
 the editor to assist in this learning process.
 
-When opened, the Blockly workspace contains a rough equivalent of the
+When [opened][], the Blockly workspace contains a rough equivalent of the
 sample game at the top of Coquette's documentation, with the following
 modifications:
 
@@ -34,3 +34,4 @@ modifications:
   [Coquette]: http://coquette.maryrosecook.com/
   [Blockly]: https://code.google.com/p/blockly/
   [mutators]: https://code.google.com/p/blockly/wiki/CreatingMutators
+  [opened]: http://toolness.github.io/coquette-blockly/
