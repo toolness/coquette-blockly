@@ -3,13 +3,20 @@
 
   var KEY_NAME = 'blockly_xml?' + window.location.pathname;
 
+  // This can be used by developers from the debug console.
+  window.getWorkspaceXml = function() {
+    var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    return Blockly.Xml.domToPrettyText(xml);    
+  };
+
   function getCurrentWorkspaceXml() {
     var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
     return Blockly.Xml.domToText(xml);
   }
 
   function loadSavedWorkspace() {
-    var lastXML = window.sessionStorage[KEY_NAME] || getInitialWorkspace();
+    var lastXML = window.sessionStorage[KEY_NAME] || getInitialWorkspace() ||
+                  $('#default-workspace').html();
     if (lastXML) {
       var xml = Blockly.Xml.textToDom(lastXML);
       Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);

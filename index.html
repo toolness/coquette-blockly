@@ -339,6 +339,114 @@ ul.toolbar {
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+  <div id="default-workspace" style="display: none">
+    <xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="variables_set" id="1" inline="true" x="-512" y="-415">
+        <field name="VAR">paramour</field>
+        <value name="VALUE">
+          <block type="create_entity" id="2" inline="true">
+            <value name="X">
+              <block type="math_number" id="3">
+                <field name="NUM">250</field>
+              </block>
+            </value>
+            <value name="Y">
+              <block type="math_number" id="4">
+                <field name="NUM">40</field>
+              </block>
+            </value>
+            <value name="COLOUR">
+              <block type="colour_picker" id="5">
+                <field name="COLOUR">#336666</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="6" inline="true">
+            <field name="VAR">player</field>
+            <value name="VALUE">
+              <block type="create_entity" id="7" inline="true">
+                <value name="X">
+                  <block type="math_number" id="8">
+                    <field name="NUM">256</field>
+                  </block>
+                </value>
+                <value name="Y">
+                  <block type="math_number" id="9">
+                    <field name="NUM">110</field>
+                  </block>
+                </value>
+                <value name="COLOUR">
+                  <block type="colour_picker" id="10">
+                    <field name="COLOUR">#cc0000</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="handle_update" id="11" inline="true">
+                <value name="TARGET">
+                  <block type="variables_get" id="12">
+                    <field name="VAR">player</field>
+                  </block>
+                </value>
+                <statement name="STACK">
+                  <block type="controls_if" id="13" inline="false">
+                    <value name="IF0">
+                      <block type="inputter_pressed" id="14">
+                        <field name="BUTTON">UP_ARROW</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="change_entity_number_prop" id="15" inline="true">
+                        <field name="PROPERTY">center.y</field>
+                        <value name="TARGET">
+                          <block type="this_entity" id="16"></block>
+                        </value>
+                        <value name="VALUE">
+                          <block type="math_number" id="17">
+                            <field name="NUM">-0.4</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <next>
+                  <block type="handle_collision" id="18" inline="true">
+                    <value name="TARGET">
+                      <block type="variables_get" id="19">
+                        <field name="VAR">player</field>
+                      </block>
+                    </value>
+                    <statement name="STACK">
+                      <block type="set_entity_number_prop" id="20" inline="true">
+                        <field name="PROPERTY">center.y</field>
+                        <value name="TARGET">
+                          <block type="other_entity" id="21"></block>
+                        </value>
+                        <value name="VALUE">
+                          <block type="get_entity_number_prop" id="22" inline="true">
+                            <field name="PROPERTY">center.y</field>
+                            <value name="TARGET">
+                              <block type="this_entity" id="23"></block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </xml>
+  </div> <!-- /#default-workspace -->
+
   <script src="vendor/blockly/blockly_compressed.js"></script>
   <script src="vendor/blockly/blocks_compressed.js"></script>
   <script src="vendor/blockly/javascript_compressed.js"></script>
